@@ -2,7 +2,8 @@ public class Main {
     public static void main(String[] args) {
         int[] massiv1 = {12, 16, 13, -8, 7, 9};
         printArray("исходный массив", massiv1);
-        bubbleSort(massiv1);
+       // bubbleSort(massiv1);
+        bubbleSortImproved(massiv1);
         printArray("упорядоченный массив", massiv1);
     }
 
@@ -15,15 +16,23 @@ public class Main {
     }
 
     public static void bubbleSort(int[] array){
-        for (int i = 0; i < array.length-1; i++) {
-            //пройти по массиву от начала, проверяя попарно каждый элемент со следующим
-            for (int j = 0; j < array.length-1-i; j++) {
-                if (array[j] > array[j+1])
-                {//поменять местами
-                    int t = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = t;
+        //int xch = array.length;
+        //if (xch > 0)
+        int xch;
+        {
+            for (int i = 0; i < array.length - 1; i++) {
+                xch = 0;
+                //пройти по массиву от начала, проверяя попарно каждый элемент со следующим
+                for (int j = 0; j < array.length - 1 - i; j++) {
+                    if (array[j] > array[j + 1]) {//поменять местами
+                        int t = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = t;
+                        xch++;
+                    }
                 }
+                if (xch == 0)
+                    break;
             }
         }
     }
